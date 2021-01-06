@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 using namespace std;
 
@@ -7,14 +7,14 @@ class Role
 public:
 	Role()
 		:Atk(0), AtkBonusPer(0), AtkBonusAdd(0), Inc(0), per(0), CriRate(5), CriDamage(50){}
-	//¹¥»÷Á¦,¹¥»÷Á¦°Ù·Ö±È,¹¥»÷Á¦ÊıÖµ,ÊôÉË¼Ó³É,ÊôÉËÕ¼±È,±©»÷ÂÊ,±©»÷ÉËº¦
+	//æ”»å‡»åŠ›,æ”»å‡»åŠ›ç™¾åˆ†æ¯”,æ”»å‡»åŠ›æ•°å€¼,å±ä¼¤åŠ æˆ,å±ä¼¤å æ¯”,æš´å‡»ç‡,æš´å‡»ä¼¤å®³
 	Role(double a, double abp, double aba, double i, double p, double cr, double cd)
 		:Atk(a), AtkBonusPer(abp), AtkBonusAdd(aba), Inc(i), per(p), CriRate(cr), CriDamage(cd){}
 
-	//ÉËº¦ÆÚÍû
+	//ä¼¤å®³æœŸæœ›
 	double ExpD() const;
 
-	//Ö±½ÓÌæ»»Îª¸üÓÅ;
+	//ç›´æ¥æ›¿æ¢ä¸ºæ›´ä¼˜;
 	void compare(const Role& compare);
 
 	Role Iabp(int n);
@@ -22,24 +22,24 @@ public:
 	Role Icr(int n);
 	Role Icd(int n);
 
-	//×î¼ÑÊôĞÔÇó½â,nÎªÓĞĞ§¸±ÊôĞÔµãÊı
+	//æœ€ä½³å±æ€§æ±‚è§£,nä¸ºæœ‰æ•ˆå‰¯å±æ€§ç‚¹æ•°
 	void Resolve(int n);
 
-	double Atk;//»ù´¡¹¥»÷
-	double AtkBonusPer;//»ù´¡¹¥»÷¼Ó³É%
-	double AtkBonusAdd;//¹¥»÷Á¦Ìá¸ß(ËÀÖ®Óğ,°àÄáÌØ,Ê³Îï)
-	double Inc;//ÔöÉË%
-	double per;//±»ÔöÉËÕ¼±È%(ÈôÎïÀí½ÇÉ«È«´òÎïÉË,ÊôĞÔ½ÇÉ«È«´òÊôÉË,ÔòÊÕÒæÎª100)
-	double CriRate;//±©»÷ÂÊ(Ë«±ù,ÑÒÖ÷´óÕĞ,Ê³Îï)
-	double CriDamage;//±©»÷ÉËº¦
+	double Atk;//åŸºç¡€æ”»å‡»
+	double AtkBonusPer;//åŸºç¡€æ”»å‡»åŠ æˆ%
+	double AtkBonusAdd;//æ”»å‡»åŠ›æé«˜(æ­»ä¹‹ç¾½,ç­å°¼ç‰¹,é£Ÿç‰©)
+	double Inc;//å¢ä¼¤%
+	double per;//è¢«å¢ä¼¤å æ¯”%(è‹¥ç‰©ç†è§’è‰²å…¨æ‰“ç‰©ä¼¤,å±æ€§è§’è‰²å…¨æ‰“å±ä¼¤,åˆ™æ”¶ç›Šä¸º100)
+	double CriRate;//æš´å‡»ç‡(åŒå†°,å²©ä¸»å¤§æ‹›,é£Ÿç‰©)
+	double CriDamage;//æš´å‡»ä¼¤å®³
 
-	int nabp = 0;//¹¥»÷°Ù·Ö±ÈÌõÊı
-	int naba = 0;//¹¥»÷ÊıÖµÌõÊı
-	int ncr = 0;//±©»÷ÂÊÌõÊı
-	int ncd = 0;//±©»÷ÉËº¦ÌõÊı
+	int nabp = 0;//æ”»å‡»ç™¾åˆ†æ¯”æ¡æ•°
+	int naba = 0;//æ”»å‡»æ•°å€¼æ¡æ•°
+	int ncr = 0;//æš´å‡»ç‡æ¡æ•°
+	int ncd = 0;//æš´å‡»ä¼¤å®³æ¡æ•°
 
-	int Maxnabp = 24;//×î´ó¹¥»÷°Ù·Ö±ÈÌõÊı
-	int Maxnaba = 24;//×î´ó¹¥»÷ÊıÖµÌõÊı
-	int Maxncr = 30;//×î´ó±©»÷ÂÊÌõÊı
-	int Maxncd = 30;//×î´ó±©»÷ÉËº¦ÌõÊı
+	int Maxnabp = 24;//æœ€å¤§æ”»å‡»ç™¾åˆ†æ¯”æ¡æ•°
+	int Maxnaba = 24;//æœ€å¤§æ”»å‡»æ•°å€¼æ¡æ•°
+	int Maxncr = 30;//æœ€å¤§æš´å‡»ç‡æ¡æ•°
+	int Maxncd = 30;//æœ€å¤§æš´å‡»ä¼¤å®³æ¡æ•°
 };

@@ -1,6 +1,6 @@
-#include"Role.h"
+ï»¿#include"Role.h"
 
-//ÉËº¦ÆÚÍû
+//ä¼¤å®³æœŸæœ›
 double Role::ExpD() const
 {
 	if (CriRate < 100)
@@ -9,7 +9,7 @@ double Role::ExpD() const
 		return (Atk * (1 + AtkBonusPer / 100) + AtkBonusAdd) * (1 + per / 100 * Inc / 100) * (1 + CriDamage / 100);
 }
 
-//Ö±½ÓÌæ»»Îª¸üÓÅ;
+//ç›´æ¥æ›¿æ¢ä¸ºæ›´ä¼˜;
 void Role::compare(const Role& compare)
 {
 	if (compare.ExpD() > ExpD())
@@ -63,7 +63,7 @@ Role Role::Icd(int n)
 	return temp;
 }
 
-//×î¼ÑÊôĞÔÇó½â,nÎªÓĞĞ§¸±ÊôĞÔµãÊı
+//æœ€ä½³å±æ€§æ±‚è§£,nä¸ºæœ‰æ•ˆå‰¯å±æ€§ç‚¹æ•°
 void Role::Resolve(int n)
 {
 	int nn = n < 45 ? n : 45;

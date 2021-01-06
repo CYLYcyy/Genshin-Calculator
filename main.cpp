@@ -1,13 +1,13 @@
-#include<iostream>
+ï»¿#include<iostream>
 #include<cmath>
 #include "Role.h"
 #include "KeQing.h"
 
-//¸±ÊôĞÔÎÊÌâ
+//å‰¯å±æ€§é—®é¢˜
 void SolveSub()
 {
-	cout << "·çÓ¥½£¿ÌÇç¹¥/À×/±©¸±ÊôĞÔ¹¥ÂÔ" << endl;
-	cout << "¹¥»÷Á¦°Ù·Ö±È  ¹¥»÷Á¦  ±©»÷ÂÊ ±©»÷ÉËº¦" << endl;
+	cout << "é£é¹°å‰‘åˆ»æ™´æ”»/é›·/æš´å‰¯å±æ€§æ”»ç•¥" << endl;
+	cout << "æ”»å‡»åŠ›ç™¾åˆ†æ¯”  æ”»å‡»åŠ›  æš´å‡»ç‡ æš´å‡»ä¼¤å®³" << endl;
 	
 	for (int i = 25; i <= 45; i++)
 	{
@@ -21,7 +21,7 @@ void SolveSub()
 	
 }
 
-//Ö÷ÊôĞÔÎÊÌâ
+//ä¸»å±æ€§é—®é¢˜
 void SolveMain()
 {
 	for (int i = 20; i <= 40; i++)
@@ -43,7 +43,7 @@ void SolveMain()
 	}
 }
 
-void main()
+int main()
 {
 	SolveMain();
 }

@@ -1,10 +1,10 @@
-#include "KeQing.h"
+ï»¿#include "KeQing.h"
 
 KeQing::KeQing()
 {
 	Atk = 323;
-	CriRate += 15;//´óÕĞ
-	CriDamage += 38.4;//Í»ÆÆ
+	CriRate += 15;//å¤§æ‹›
+	CriDamage += 38.4;//çªç ´
 	
 	wp = 0;
 	r = 0;
@@ -15,13 +15,13 @@ void KeQing::WP(int i)
 {
 	switch (i)
 	{
-	case 0://Ï»ÀïÁúÒ÷
+	case 0://åŒ£é‡Œé¾™åŸ
 
 		break;
-	case 1://Ìì¿Õ
+	case 1://å¤©ç©º
 
 		break;
-	case 2://·çÓ¥½£
+	case 2://é£é¹°å‰‘
 		Atk += 674;
 		AtkBonusPer += 20;
 		break;
@@ -35,11 +35,11 @@ void KeQing::R(int i)
 {
 	switch (i)
 	{
-	case 0://ÈçÀ×2+½Ç¶·2
+	case 0://å¦‚é›·2+è§’æ–—2
 		Inc += 15;
 		AtkBonusPer += 18;
 		break;
-	case 1://Æ½À×
+	case 1://å¹³é›·
 		Inc += 35;
 		break;
 	default:
@@ -50,25 +50,25 @@ void KeQing::R(int i)
 
 void KeQing::RM(int i)
 {
-	AtkBonusAdd += 311;//Óğ
-	AtkBonusPer += 46.6;//É³
+	AtkBonusAdd += 311;//ç¾½
+	AtkBonusPer += 46.6;//æ²™
 	switch (i)
 	{
-	case 0://À×/±©
+	case 0://é›·/æš´
 		Inc += 46.6;
 		CriRate += 31.1;
 		Maxncr = 24;
 		break;
-	case 1://À×/±©ÉË
+	case 1://é›·/æš´ä¼¤
 		Inc += 46.6;
 		CriDamage += 62.2;
 		Maxncd = 24;
 		break;
-	case 2://¹¥/±©
+	case 2://æ”»/æš´
 		AtkBonusPer += 46.6;
 		CriRate += 31.1;
 		Maxncr = 24;
-	case 3://¹¥/±¬ÉË
+	case 3://æ”»/çˆ†ä¼¤
 		AtkBonusPer += 46.6;
 		CriDamage += 62.2;
 		Maxncd = 24;

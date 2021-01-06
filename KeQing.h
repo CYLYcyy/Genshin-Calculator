@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Role.h"
 
 class Role;
@@ -6,9 +6,9 @@ class KeQing :public Role
 {
 public:
 	KeQing();
-	void WP(int i);//ÎäÆ÷Ñ¡Ôñ
-	void R(int i);//Ì××°Ñ¡Ôñ
-	void RM(int i);//Ö÷ÊôÐÔÑ¡Ôñ
+	void WP(int i);//æ­¦å™¨é€‰æ‹©
+	void R(int i);//å¥—è£…é€‰æ‹©
+	void RM(int i);//ä¸»å±žæ€§é€‰æ‹©
 	void Resolve(int n);
 	int wp;
 	int r;
