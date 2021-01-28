@@ -24,12 +24,18 @@
     <ClCompile Include="KeQing.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="KeLi.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KeQing.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Role.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KeLi.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
