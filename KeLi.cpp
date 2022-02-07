@@ -15,38 +15,38 @@ double KeLi::AE() const
 
 KeLi::KeLi()
 {
-	Atk = 311;
-	Inc += 28.8;//突破火伤
+	mBaseAttack = 311;
+	mDamageIncrease += 28.8;//突破火伤
 }
 
 void KeLi::WP(int i)
 {
 	switch (i)
 	{
-	case 1://四风原典
-		Atk += 608;
-		CriRate += 33.1;
-		Inc += 32;
+    case 4://四风原典
+		mBaseAttack += 608;
+		mCriticalRate += 33.1;
+		mDamageIncrease += 32;
 		break;
-	case 2://天空之卷
-		Atk += 674;
-		AtkBonusPer += 33.1;
-		Inc += 12;
+    case 5://天空之卷
+		mBaseAttack += 674;
+		mAttackPercent += 33.1;
+		mDamageIncrease += 12;
 		break;
-	case 3://流浪乐章1
-		Atk += 510;
-		CriDamage += 55.1;
-		AtkBonusPer += 60;
+    case 1://流浪乐章1
+		mBaseAttack += 510;
+		mCriticalDamage += 55.1;
+		mAttackPercent += 60;
 		break;
-	case 4://流浪乐章2
-		Atk += 510;
-		CriDamage += 55.1;
-		Inc += 48;
+    case 2://流浪乐章2
+		mBaseAttack += 510;
+		mCriticalDamage += 55.1;
+		mDamageIncrease += 48;
 		break;
-	case 5://流浪乐章3
-		Atk += 510;
-		CriDamage += 55.1;
-		Mystery += 200;
+    case 3://流浪乐章3
+		mBaseAttack += 510;
+		mCriticalDamage += 55.1;
+		mMastery += 200;
 		break;
 	default:
 		break;
@@ -59,11 +59,11 @@ void KeLi::R(int i)
 	switch (i)
 	{
 	case 1://魔女
-		Inc += 30;
+		mDamageIncrease += 30;
 		//BP+=15;
 		break;
 	case 2://渡火
-		Inc += 35;
+		mDamageIncrease += 35;
 		break;
 	default:
 		break;
@@ -71,66 +71,95 @@ void KeLi::R(int i)
 	r = i;
 }
 
-void KeLi::RM(int i)
+void KeLi::R1M(int i)
 {
-	AtkBonusAdd += 311;//羽
-	AtkBonusPer += 46.6;//沙
-	switch (i)
-	{
-	case 1://火/暴
-		Inc += 46.6;
-		CriRate += 31.1;
-        Maxncr = 24;
-		break;
-	case 2://雷/暴伤
-		Inc += 46.6;
-		CriDamage += 62.2;
-        Maxncd = 24;
-		break;
-	case 3://攻/暴
-		AtkBonusPer += 46.6;
-		CriRate += 31.1;
-        Maxncr = 24;
-		break;
-	case 4://攻/爆伤
-		AtkBonusPer += 46.6;
-		CriDamage += 62.2;
-        Maxncd = 24;
-		break;
-	default:
-		break;
-	}
-	rm = i;
+    switch (i)
+    {
+    case 1://攻击
+        mAttackPercent += 46.6;
+        _maxNumAttackPercent -= 6;
+        break;
+    case 2://精通
+        mMastery += 187;
+        break;
+    default:
+        break;
+    }
+    r1m = i;
+}
+//杯主属性选择
+void KeLi::R2M(int i)
+{
+    switch (i)
+    {
+    case 1://雷
+        mDamageIncrease += 46.6;
+        break;
+    case 2://攻击
+        mAttackPercent += 46.6;
+        _maxNumAttackPercent -= 6;
+        break;
+    case 3://精通
+        mMastery += 187;
+        break;
+    default:
+        break;
+    }
+    r2m = i;
+}
+//头主属性选择
+void KeLi::R3M(int i)
+{
+    switch (i)
+    {
+    case 1://暴
+        mCriticalRate += 31.1;
+        _maxNumCriticalRate -= 6;
+        break;
+    case 2://暴伤
+        mCriticalDamage += 62.2;
+        _maxNumCriticalDamage -= 6;
+        break;
+    case 3://精通
+        mMastery += 187;
+        break;
+    default:
+        break;
+    }
+    r3m = i;
 }
 
-double KeLi::ExpD() const
+double KeLi::ExpD()
 {
-	double allatk = allAtk();
-	double cr = CR();
-	double db = DB();
-	double sp = SP();
-	double ae = AE();
-	return allAtk() * (1 + CR()) * (1 + DB()) * (1+SP()+AE()) * 2.0;//全打融化
+    if (_attributeChanged)
+    {
+        expD = allAtk() * (1 + CR()) * (1 + DB()) * (1 + SP() + AE()) * 2.0;//全打融化
+        _attributeChanged = false;
+    }
+    return expD;
 }
 
 void KeLi::Resolve(int n)
 {
 	KeLi temp = KeLi(*this);
 	int nn = n < 45 ? n : 45;
-	for (int i = 0; i <= nn && i <= Maxnabp; i++)
-	{
-		for (int j = 0; j <= nn - i && i <= Maxnaba; j++)
-		{
-			for (int k = 0; k <= nn - i - j && i <= Maxncr; k++)
-			{
-				if (nn - i - j - k <= Maxncd)
-				{
-					Role* comp = new KeLi(temp);
-					comp->Iabp(i)->Iaba(j)->Icr(k)->Icd(nn - i - j - k);
-					compare(comp);
-					delete comp;
-				}
-			}
-		}
-	}
+    for (int i = 0; i <= nn && i <= _maxNumAttackPercent; i++)
+    {
+        for (int j = 0; j <= nn - i && j <= _maxNumAttackAdd; j++)
+        {
+            for (int k = 0; k <= nn - i - j && k <= _maxNumCriticalRate; k++)
+            {
+                for (int l = 0; l <= nn - i - j - k && l <= _maxNumCriticalDamage; l++)
+                {
+                    if (nn - i - j - k - l <= _maxNumMastery)
+                    {
+                        Role* comp = new KeLi(temp);
+                        comp->assignSubAttributes(i, j, k, l, nn - i - j - k - l);
+                        compare(comp);
+                        delete comp;
+                    }
+                }
+            }
+        }
+    }
 }
